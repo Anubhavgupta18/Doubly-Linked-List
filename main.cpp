@@ -18,12 +18,9 @@ public:
     }
     ~doubly_linked_list()
     {
-        node *temp;
         while(start)
         {
-            temp=start;
-            start=start->next;
-            delete temp;
+            delete_first();
         }
     }
     void insert_first(int data);
@@ -114,7 +111,8 @@ void doubly_linked_list::delete_first()
     {
         node *temp=start;
         start=start->next;
-        start->prev=NULL;
+        if(start!=NULL)
+            start->prev=NULL;
         delete temp;
     }
 }
